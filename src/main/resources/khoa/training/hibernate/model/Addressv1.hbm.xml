@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="khoa.training.hibernate.model.Addressv1" table="address">
+        <id name="addressId" type="java.lang.Integer">
+            <column name="address_id" />
+            <generator class="native" />
+        </id>
+        <property name="location" type="java.lang.String">
+            <column name="location" length="200" not-null="true" />
+        </property>
+        <many-to-one name="student" 
+        column="student_id" 
+        class="khoa.training.hibernate.model.Studentv1"
+
+        />
+    </class>
+</hibernate-mapping>

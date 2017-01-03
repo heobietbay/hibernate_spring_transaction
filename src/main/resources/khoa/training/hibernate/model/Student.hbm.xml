@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="khoa.training.hibernate.model.Student" table="student">
+        <id name="studentId" type="java.lang.Integer">
+            <column name="student_id" />
+            <generator class="native" />
+        </id>
+        <property name="firstName" type="java.lang.String">
+            <column name="first_name" length="30" not-null="true" />
+        </property>
+        <property name="lastName" type="java.lang.String">
+            <column name="last_name" length="30" not-null="true" />
+        </property>
+        <property name="dob" type="java.util.Date">
+            <column name="dob"/>
+        </property>
+    </class>
+</hibernate-mapping>
