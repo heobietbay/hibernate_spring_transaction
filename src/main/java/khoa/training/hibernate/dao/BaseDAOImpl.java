@@ -28,6 +28,11 @@ public abstract class BaseDAOImpl implements IBaseDAO{
     }
 
     @Transactional
+    public void clear() {
+        getSession().clear();
+    }
+
+    @Transactional
     public void saveOrUpdate(Object object)
     {
         getSession().saveOrUpdate(object);

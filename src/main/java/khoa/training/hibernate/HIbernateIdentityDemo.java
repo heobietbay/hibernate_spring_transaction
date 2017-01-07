@@ -1,5 +1,6 @@
 package khoa.training.hibernate;
 
+import khoa.training.hibernate.dao.IStudentDAO;
 import khoa.training.hibernate.model.Addressv1;
 import khoa.training.hibernate.model.Studentv1;
 import khoa.training.hibernate.service.IStudentService;
@@ -45,9 +46,12 @@ public class HIbernateIdentityDemo {
 
         demoInsertManyStudent(studentService);
 
+        IStudentDAO studentDAO = (IStudentDAO)context.getBean("studentDAO");
+        //studentDAO.clear();
+
         try{
-            System.err.println("About to call studentService.updateStudent(studentService.findById(1))");
-            studentService.updateStudent(studentService.findById(1));
+            System.err.println("About to call studentService.updateStudent(null)");
+            studentService.updateStudent(null);
         }
         catch (RuntimeException e)
         {

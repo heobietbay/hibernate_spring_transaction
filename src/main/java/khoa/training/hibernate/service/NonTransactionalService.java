@@ -49,6 +49,7 @@ public class NonTransactionalService implements INonTransactionalService
             // technically not needed since this object already in the session
             //    studentDAO.saveOrUpdate(st);
         }
+        studentDAO.clear();
     }
     public void setStudentDAO(IStudentDAO studentDAO)
     {

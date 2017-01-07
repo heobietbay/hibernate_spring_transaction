@@ -49,7 +49,7 @@ public class StudentDAOImpl extends BaseDAOImpl implements IStudentDAO{
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional
     public Object findById(Class T, Serializable id) {
         Query query = getSession()
                 .createQuery("from Studentv1 as st where st.id = :id")
@@ -61,8 +61,9 @@ public class StudentDAOImpl extends BaseDAOImpl implements IStudentDAO{
                // this has basically the same effect as FlushMode.NEVER, but it's stronger since you cannot even flush manually.
                // Be SMART with this choice, cause this can mess up your application, you will sometime run into
                // scenario where hibernate cannot commit transaction.
-                .setReadOnly(true)
-                .setFlushMode(FlushMode.MANUAL);
+               // .setReadOnly(true)
+                //.setFlushMode(FlushMode.MANUAL)
+                ;
 
         return query.uniqueResult();
     }

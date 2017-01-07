@@ -116,9 +116,7 @@ public class StudentServiceImpl implements IStudentService, ApplicationContextAw
             // and http://stackoverflow.com/questions/6222600/transactional-method-calling-another-method-without-transactional-anotation
             throw new RuntimeException("For testing transactional, should expect that StudentServiceImpl.updateStudent() not done anything, " +
                     "while dummyCGLibProxyTransactionalService.updateStudent() WILL WORK because it is another instance called.");
-        }
-        studentv1.setFirstName(studentv1.getFirstName() + "_modified ");
-        nonTransactionalService.processStudent(studentv1);
+        };
 
         // This cause non unique object exception, will investigate later
        // studentDAO.update(studentv1);
@@ -128,7 +126,7 @@ public class StudentServiceImpl implements IStudentService, ApplicationContextAw
     public void updateStudent() {
         Studentv1 studentv1 = findById(2);
         studentv1.setFirstName(studentv1.getFirstName() + "_StudentServiceImpl");
-        nonTransactionalService.processStudent(studentv1);
+        studentDAO.update(studentv1);
     }
 
     public Studentv1 findById(Integer id) {
