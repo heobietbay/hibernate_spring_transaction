@@ -5,7 +5,6 @@ import org.hibernate.FlushMode;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
@@ -61,8 +60,8 @@ public class StudentDAOImpl extends BaseDAOImpl implements IStudentDAO{
                // this has basically the same effect as FlushMode.NEVER, but it's stronger since you cannot even flush manually.
                // Be SMART with this choice, cause this can mess up your application, you will sometime run into
                // scenario where hibernate cannot commit transaction.
-               // .setReadOnly(true)
-                //.setFlushMode(FlushMode.MANUAL)
+                .setReadOnly(true)
+                .setFlushMode(FlushMode.MANUAL)
                 ;
 
         return query.uniqueResult();
