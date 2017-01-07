@@ -58,13 +58,8 @@ public class HIbernateIdentityDemo {
             System.err.println(e.getMessage());
         }
 
-        System.err.println("About to view all student");
-        List<Studentv1> lst = studentService.findAll();
-        for(Studentv1 studentv1 : lst)
-        {
-            System.out.println(studentv1);
-            System.out.println(" \t" + studentv1.getAddressv1Set().toArray()[0]);
-        }
+        Studentv1 studentId3 = (Studentv1) studentDAO.findById(Studentv1.class,3);
+        System.out.println(studentId3);
     }
 
 

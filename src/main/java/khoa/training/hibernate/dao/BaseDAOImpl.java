@@ -35,6 +35,9 @@ public abstract class BaseDAOImpl implements IBaseDAO{
     @Transactional
     public void saveOrUpdate(Object object)
     {
+        // Workaround readonly scenario: first evict that out of the session
+        getSession().evict(object);
+        // actual update operation
         getSession().saveOrUpdate(object);
     }
 

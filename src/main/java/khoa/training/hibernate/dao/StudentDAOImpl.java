@@ -53,9 +53,17 @@ public class StudentDAOImpl extends BaseDAOImpl implements IStudentDAO{
         Query query = getSession()
                 .createQuery("from Studentv1 as st where st.id = :id")
                 .setParameter("id",id)
-                // If you specify readOnly as true, the flush mode will be set as FlushMode.NEVER
-               // in the current Hibernate Session preventing the session from commiting the transaction.
-               // Furthermore, setReadOnly(true) will be called on the JDBC Connection, which is also a hint
+                /*
+               Entities and proxies that exist in the session before being returned by an HQL query or criteria are not affected.
+
+               Uninitialized persistent collections returned by the query are not affected. Later, when the collection is initialized,
+                entities loaded into the session will be read-only if Session.isDefaultReadOnly() returns true.
+
+               Using Query.setReadOnly( true ) or Criteria.setReadOnly( true ) works well when a single HQL query or criteria loads all
+                the entities and intializes all the proxies and collections that the application needs to be read-only.
+                */
+
+                // Furthermore, setReadOnly(true) will be called on the JDBC Connection, which is also a hint
                // to the underlying database. If your database supports it (most likely it does),
                // this has basically the same effect as FlushMode.NEVER, but it's stronger since you cannot even flush manually.
                // Be SMART with this choice, cause this can mess up your application, you will sometime run into
