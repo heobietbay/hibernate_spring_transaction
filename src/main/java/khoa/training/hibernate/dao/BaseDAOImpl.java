@@ -71,7 +71,7 @@ public abstract class BaseDAOImpl implements IBaseDAO{
      * Must containt where clase by id: .... where T.id = :id
      * @return
      */
-    abstract String getUpdateHql() ;
+    protected abstract String getUpdateHql() ;
 
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;

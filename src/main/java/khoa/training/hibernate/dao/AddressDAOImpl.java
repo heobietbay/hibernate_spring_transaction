@@ -49,7 +49,7 @@ public class AddressDAOImpl extends BaseDAOImpl implements IAddressDAO {
         return list == null || list.isEmpty() ? null : list.get(0).getStudent();
     }
 
-    String getUpdateHql() {
+    protected String getUpdateHql() {
         return "update Addressv1 a set a.location = a.location where a.id = :id ";
     }
 

@@ -5,6 +5,7 @@ import org.hibernate.FlushMode;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
@@ -75,7 +76,7 @@ public class StudentDAOImpl extends BaseDAOImpl implements IStudentDAO{
         return query.uniqueResult();
     }
 
-    String getUpdateHql() {
+    protected String getUpdateHql() {
         return "update Studentv1 a set a.dob = a.dob where a.id = :id ";
     }
     @Override
