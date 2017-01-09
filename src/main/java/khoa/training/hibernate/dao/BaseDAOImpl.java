@@ -19,6 +19,11 @@ public abstract class BaseDAOImpl implements IBaseDAO{
         return this.getSession(false);
     }
 
+    public Session openSession()
+    {
+        return getSession(true);
+    }
+
     protected Session getSession(boolean allowNewSession) {
         if (!allowNewSession) {
             return sessionFactory.getCurrentSession();
@@ -26,6 +31,7 @@ public abstract class BaseDAOImpl implements IBaseDAO{
             return sessionFactory.openSession();
         }
     }
+
 
     @Transactional
     public void clear() {

@@ -1,5 +1,7 @@
 package khoa.training.hibernate.dao;
 
+import org.hibernate.Session;
+
 import java.io.Serializable;
 
 /**
@@ -9,6 +11,8 @@ public interface IBaseDAO {
     Object merge(Object object);
     Object findById(Class T, Serializable id);
     Object lockById(Serializable id);
+
+    Session openSession();
 
     /**
      * Clear all things in a session.
