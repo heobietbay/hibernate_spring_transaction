@@ -29,12 +29,13 @@ public class StudentServiceImpl implements IStudentService {
         return studentv1List.get(0);
     }
 
+    @Deprecated
     public Object merge(Object object) {
-        return null;
+        throw new UnsupportedOperationException("Not support in JPA implementation");
     }
 
     public Studentv1 findById(Integer id) {
-        return null;
+        return studentRepository.findOne(id);
     }
 
     public void saveOrUpdate(Studentv1 studentv1) {
@@ -50,7 +51,9 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     public void findAndUpdateStudentThatLiveIn(String addr) {
-
+        List<Studentv1> studentv1List = studentRepository.findStudentLiveIn(addr);
+        studentv1List.get(0).setLastName("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        studentRepository.save(studentv1List.get(0));
     }
 
     public void updateStudent(Studentv1 studentv1) {
