@@ -1,4 +1,4 @@
-package khoa.training.hibernate.service;
+package khoa.training.service;
 
 import khoa.training.hibernate.dao.IAddressDAO;
 import khoa.training.hibernate.dao.IStudentDAO;

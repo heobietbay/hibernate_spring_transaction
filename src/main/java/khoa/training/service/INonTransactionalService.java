@@ -1,4 +1,4 @@
-package khoa.training.hibernate.service;
+package khoa.training.service;
 
 import khoa.training.hibernate.model.Studentv1;
 

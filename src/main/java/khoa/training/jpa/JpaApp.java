@@ -1,25 +1,19 @@
-package khoa.training.hibernate;
+package khoa.training.jpa;
 
-import khoa.training.hibernate.dao.IStudentDAO;
 import khoa.training.hibernate.model.Addressv1;
 import khoa.training.hibernate.model.Studentv1;
 import khoa.training.service.IStudentService;
-import khoa.training.hibernate.util.HibernateUtil;
-import org.hibernate.jdbc.Work;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.*;
 
-public class App 
+public class JpaApp
 {
     public static void main( String[] args )
     {
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("khoa/training/hibernate/config/application_context.xml");
-       // demoInsertStudentInOwnTransaction1();
+        ApplicationContext context = new ClassPathXmlApplicationContext("khoa/training/jpa/config/application_context.xml");
         demoInsertManyStudent(context);
 
         Scanner keyboard = new Scanner(System.in);
@@ -57,18 +51,6 @@ public class App
         IStudentService studentService = (IStudentService) context.getBean("studentService");
         studentService.findAndUpdateStudentThatLiveIn(addr);
     }
-    private static void demoInsertStudentInOwnTransaction1() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("khoa/training/hibernate/config/application_context.xml");
-        IStudentDAO studentDAO = (IStudentDAO) context.getBean("studentDAO");
-
-        Studentv1 student = new Studentv1();
-
-        student.setDob(new Date());
-        student.setFirstName("With own transaction 222");
-        student.setLastName("Demo");
-
-        studentDAO.insertStudentWithOwnTransaction(student);
-    }
 
     private static List<Studentv1> createManyStudents(int howMany)
     {
@@ -93,12 +75,5 @@ public class App
         }
 
         return res;
-    }
-    private static void testHibernateConnection() {
-        HibernateUtil.getSessionFactory().openSession().doWork(new Work() {
-            public void execute(Connection connection) throws SQLException {
-                System.out.println("We are here, there must be connection");
-            }
-        });
     }
 }

@@ -1,4 +1,4 @@
-package khoa.training.hibernate.service;
+package khoa.training.service;
 
 import jdk.nashorn.internal.objects.annotations.Setter;
 import khoa.training.hibernate.dao.IStudentDAO;

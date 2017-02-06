@@ -3,7 +3,7 @@ package khoa.training.hibernate;
 import khoa.training.hibernate.dao.IStudentDAO;
 import khoa.training.hibernate.model.Addressv1;
 import khoa.training.hibernate.model.Studentv1;
-import khoa.training.hibernate.service.IStudentService;
+import khoa.training.service.IStudentService;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -41,7 +41,7 @@ public class HibernateIdentityDemo {
      */
     public static void main(String[] args) {
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("application_context.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("khoa/training/hibernate/config/application_context.xml");
         IStudentService studentService = (IStudentService) context.getBean("studentService");
 
         demoInsertManyStudent(studentService);
