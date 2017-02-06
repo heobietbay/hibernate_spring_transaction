@@ -1,15 +1,30 @@
 package khoa.training.hibernate.model;
 
-import java.util.*;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by trandangkhoa on 4/16/2015.
  */
+@Entity
+@Table(name = "student")
 public class Studentv1 {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "student_id")
     private Integer studentId;
+
+
+    @Column(name = "first_name", nullable = false, length = 30)
     private String firstName;
+
+    @Column(name = "last_name", nullable = false, length = 30)
     private String lastName;
+
+    @Column(name = "dob")
     private Date dob;
     /**
      * This is marked as <timestamp> in hibernate mapping.
@@ -17,8 +32,14 @@ public class Studentv1 {
      * Manually update this can cause optimistic locking exception.
      * https://www.intertech.com/Blog/versioning-optimistic-locking-in-hibernate/
      */
+    @Version
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "last_modified")
     private Date lastModified;
 
+    @OneToMany(mappedBy = "student",      // must specify mappedBy since this is bidirectional
+               targetEntity = Addressv1.class,
+               cascade = CascadeType.ALL)
     private Set<Addressv1> addressv1Set = new HashSet<Addressv1>();
 
     public Integer getStudentId() {

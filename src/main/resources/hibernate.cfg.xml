@@ -13,7 +13,7 @@
         <!--<property name="hibernate.hbm2ddl.auto">update</property>-->
         <!-- <property name="hbm2ddl.auto">create</property> -->
 
-       <!-- <property name="hibernate.current_session_context_class">org.hibernate.context.ThreadLocalSessionContext</property>-->
+        <!-- <property name="hibernate.current_session_context_class">org.hibernate.context.ThreadLocalSessionContext</property>-->
 
 
         <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
@@ -35,10 +35,5 @@
 
         <property name="show_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">create</property>
-
-      <!--  <mapping resource="khoa/training/hibernate/model/Student.hbm.xml" />
-       <mapping resource="khoa/training/hibernate/model/Address.hbm.xml" />-->
-       <mapping resource="khoa/training/hibernate/model/Addressv1.hbm.xml" />
-       <mapping resource="khoa/training/hibernate/model/Studentv1.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

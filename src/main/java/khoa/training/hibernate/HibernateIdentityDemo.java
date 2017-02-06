@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by khoa on 12/30/2016.
  */
-public class HIbernateIdentityDemo {
+public class HibernateIdentityDemo {
 
     /**
      * Please read those topic for deeper understanding
@@ -96,5 +96,5 @@ public class HIbernateIdentityDemo {
         return res;
     }
 
-    static org.slf4j.Logger logger = LoggerFactory.getLogger(HIbernateIdentityDemo.class);
+    static org.slf4j.Logger logger = LoggerFactory.getLogger(HibernateIdentityDemo.class);
 }
